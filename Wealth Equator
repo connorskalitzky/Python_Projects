@@ -1,0 +1,34 @@
+billionaires = {
+    "Jeff Bezos": 133_400_000_000,
+    "Elon Musk": 176_900_000_000,
+    "Bernard Arnault": 237_900_000_000,
+    "Bill Gates": 114_000_000_000,
+}
+
+items = {
+    "average yearly salary": 50_000,
+    "car": 35_000,
+    "house": 350_000,
+    "phone": 1_000,
+    "private island": 5_000_000,
+    "expensive clothing": 500,
+    "expensive tech": 2_000,
+}
+
+def wealth_equator(name, items_list):
+    net_worth = billionaires[name]
+    print(f"{name}'s net worth: ${net_worth:,}")
+    print("\nItems you can buy with this net worth:")
+    for item, price in items_list.items():
+        quantity = net_worth // price
+        print(f"{quantity:,} {item}s at ${price:,} each")
+
+if __name__ == "__main__":
+    print("Select a billionaire:")
+    for index, name in enumerate(billionaires.keys()):
+        print(f"{index + 1}. {name}")
+
+    selection = int(input("Enter the number corresponding to your choice: ")) - 1
+    selected_billionaire = list(billionaires.keys())[selection]
+
+    wealth_equator(selected_billionaire, items)
